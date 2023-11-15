@@ -1,6 +1,6 @@
 # Tasks App
 
-Manage personal or entreprise tasks between different workspaces, boards and lists
+Manage personal or enterprise tasks between different workspaces, boards and lists
 
 This project is based on _Code With Antonio_'s tutorial
 
