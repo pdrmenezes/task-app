@@ -5,12 +5,14 @@ export default async function ProtectedServerPage() {
   const { userId, user: authUser } = auth();
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold">Protected Server Page</h1>
-      <p>User: {user?.firstName}</p>
-      <p>UserId: {userId}</p>
-      <p>authUser: {authUser?.lastName}</p>
+    <div className="flex h-full flex-col items-center justify-center">
       <UserButton afterSignOutUrl="/" />
+      <h1 className="text-3xl font-bold">Protected Server Page</h1>
+      <div className="flex flex-col">
+        <p>User: {user?.firstName}</p>
+        <p>UserId: {userId}</p>
+        <p>authUser: {authUser?.firstName}</p>
+      </div>
     </div>
   );
 }
