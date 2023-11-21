@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 export default function PlatformLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <div lang="en" className="h-screen bg-slate-100">
+      <div className="h-screen bg-slate-100">
         <Navbar />
-        <main className="bg-slate-100 pb-20 pt-40">{children}</main>
+        <main className="h-full">{children}</main>
         <Footer />
       </div>
     </ClerkProvider>
