@@ -13,7 +13,7 @@ export default function PlatformLayout({ children }: { children: React.ReactNode
     <ClerkProvider>
       <div className="h-screen bg-slate-100">
         <Navbar />
-        <main className="h-full">{children}</main>
+        <main className="flex h-full flex-col justify-center">{children}</main>
         <Footer />
       </div>
     </ClerkProvider>
