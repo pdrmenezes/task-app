@@ -10,7 +10,7 @@ export default async function ProtectedServerPage() {
       <p>User: {user?.firstName}</p>
       <p>UserId: {userId}</p>
       <p>authUser: {authUser?.lastName}</p>
-      <UserButton />
+      <UserButton afterSignOutUrl="/" />
     </div>
   );
 }
