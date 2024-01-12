@@ -21,7 +21,10 @@ export function Sidebar({ storageKey = "t-sidebar-state" }: SidebarProps) {
   const { userMemberships, isLoaded: isLoadedOrganizationList } = useOrganizationList({
     userMemberships: { infinite: true },
   });
-  // for each item inside our expanded items list saved on the local storage, we'll add their keys to the default accordion state, passing it a default value of []
+  // we'll transform our object held on the localStorage with id and status of expanded to an array of ids for the accordion
+  // object on local storage has the id of the accordion item and a boolean that represents if it is expanded or not and looks like: { "accordionItemId1": true, "accordionItemId2": false  ... }
+  // the array we'll transform to will only contain the accordion item's ids: [ "accordionItemId1", "accordionItemId2" ]
+  // in the reduce method, for each item inside our expanded object saved on the local storage, we'll add their respective keys (ids) as the Accordion's defaultValue, and also pass a default value for the reduce method of an empty array []
   const defaultAccordionValue: string[] = Object.keys(expanded).reduce((accumulator: string[], key: string) => {
     if (expanded[key]) {
       accumulator.push(key);
@@ -43,5 +46,17 @@ export function Sidebar({ storageKey = "t-sidebar-state" }: SidebarProps) {
     );
   }
 
-  return <div>sidebar</div>;
+  return (
+    <>
+      <div className="mb-1 flex items-center text-xs font-medium">
+        <span className="pl-4">Workspaces</span>
+        <Button asChild type="button" size="icon" variant="ghost" className="ml-auto">
+          <Link href="/select-org">
+            <Plus className="2-4 h-4" />
+          </Link>
+        </Button>
+      </div>
+      <Accordion type="multiple" defaultValue={defaultAccordionValue}></Accordion>
+    </>
+  );
 }
